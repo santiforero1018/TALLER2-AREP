@@ -1,11 +1,14 @@
 package edu.escuelaing.arep.taller1.Facade;
 
-import java.io.IOException;
 import java.util.concurrent.ConcurrentHashMap;
+import com.google.gson.*;
 
+/**
+ * Cache class implemented to simulated cache
+ * @author Santiago Forero Yate 
+ */
 public class Cache {
-    private ConcurrentHashMap<String, String> movieCache;
-    private APIRestFacade apf;
+    private ConcurrentHashMap<String, JsonObject> movieCache;
     private static Cache cache = null;
 
 
@@ -13,9 +16,8 @@ public class Cache {
      * Cache's class constructor
      * @param apf
      */
-    public Cache(APIRestFacade apf){
-        this.apf = apf;
-        movieCache = new ConcurrentHashMap<String, String>();
+    public Cache(){
+        movieCache = new ConcurrentHashMap<String,JsonObject>();
     }
 
     /**
@@ -24,7 +26,7 @@ public class Cache {
      */
     public static Cache getInstance(){
         if(cache == null){
-            cache = new Cache(new APIRestFacade());
+            cache = new Cache();
         }
 
         return cache;
@@ -32,31 +34,29 @@ public class Cache {
 
 
     /**
-     * method that returns a result if this one exist inside chache, else
-     * do a petition to the external API
+     * method that returns a result if this one exist inside cache
      * 
      * @param name name of the movie to search
      * @return All data of the movie
      */
-    public String getMovie(String name){
-        if(movieCache.containsKey(name)){
-            return movieCache.get(name);
-        }
-        try{
-            movieCache.putIfAbsent(name, apf.searchMovie(name));
-            return movieCache.get(name);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
-        return null;
+    public JsonObject getMovie(String name){
+        return movieCache.get(name);
     }
 
     /**
-     * method that returns all the movies storaged in cache
-     * @return a concurrent HashMap with all movies stored 
+     * method that returns if a movie is inside cache
+     * @return a boolean  
      */
-    public ConcurrentHashMap<String,String> getMoviesInCache(){
-        return movieCache;
+    public boolean movieInCache(String name){
+        return movieCache.containsKey(name);
+    }
+
+    /**
+     * Add a consult of a movie in cache
+     * @param name name of the movie
+     * @param movieInfo Json about movie info
+     */
+    public void addMovieToCache(String name, JsonObject movieInfo){
+        movieCache.putIfAbsent(name, movieInfo);
     }
 }

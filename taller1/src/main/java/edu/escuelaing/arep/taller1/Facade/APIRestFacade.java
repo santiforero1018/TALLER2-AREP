@@ -1,25 +1,41 @@
 package edu.escuelaing.arep.taller1.Facade;
 
 import java.net.*;
+
+import com.google.gson.JsonObject;
+import com.google.gson.*;
+
 import java.io.*;
 
+/**
+ * Rest API facade to do petitions on a external Rest API
+ * @author Santiago Forero Yate
+ */
 public class APIRestFacade {
 
-    // private static final String USER_AGENT = "Mozilla/5.0";
+    private static final String USER_AGENT = "Mozilla/5.0";
     private static final String MOVIE_URL = "http://www.omdbapi.com/?apikey=7c113d4c&t=";
+    private Cache cache = null;
+
+    public APIRestFacade(){
+        this.cache = Cache.getInstance();
+    }
 
     /**
      * Search for a specific movie by name on a external API
      * @param name name of the movie to search
-     * @return a string with all data about the movie 
+     * @return a Json with all data about the movie 
     */ 
-    public String searchMovie(String name) throws IOException {
-        URL obj = new URL(MOVIE_URL);
+    public JsonObject searchMovie(String name) throws IOException {
+        if(cache.movieInCache(name)){
+            return cache.getMovie(name);
+        }
+        URL obj = new URL(MOVIE_URL+name);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
         con.setRequestMethod("GET");
-        // con.setRequestProperty("User-Agent", USER_AGENT);
+        con.setRequestProperty("User-Agent", USER_AGENT);
 
-        String finalResponse = "";
+        // JsonObject finalResponse = null;
 
         // The following invocation perform the connection implicitly before getting the
         // code
@@ -38,12 +54,14 @@ public class APIRestFacade {
             in.close();
 
 
-            finalResponse = response.toString();
+            // finalResponse = JsonParser.parseString(response.toString()).getAsJsonObject();
+
+            cache.addMovieToCache(name, JsonParser.parseString(response.toString()).getAsJsonObject());
             // print result
-            System.out.println(finalResponse);
+            System.out.println(response.toString());
         } else {
-            return "la peticion no se pudo realizar";
+            System.out.println("no se pudo realizar la petición");
         }
-        return finalResponse;
+        return Cache.getInstance().getMovie(name);
     }
 }

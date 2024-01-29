@@ -16,8 +16,15 @@ public class WebServer {
     private static final APIRestFacade apf = new APIRestFacade();
 
     /**
+     * Defautl Constructor
+     */
+    public WebServer(){
+
+    }
+
+    /**
      * Method that start the web server
-     * @throws IOException
+     * @throws IOException throws IOException if something fails
      */
     public static void startSever() throws IOException {
         ServerSocket serverSocket = null;

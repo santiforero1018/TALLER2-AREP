@@ -2,7 +2,6 @@ package edu.escuelaing.arep.taller1.Facade;
 
 import java.net.*;
 
-import com.google.gson.JsonObject;
 import com.google.gson.*;
 
 import java.io.*;
@@ -17,6 +16,9 @@ public class APIRestFacade {
     private static final String MOVIE_URL = "http://www.omdbapi.com/?apikey=7c113d4c&t=";
     private Cache cache = null;
 
+    /**
+     * Constructor for APIRestFacade class
+     */
     public APIRestFacade(){
         this.cache = Cache.getInstance();
     }
@@ -24,6 +26,7 @@ public class APIRestFacade {
     /**
      * Search for a specific movie by name on a external API
      * @param name name of the movie to search
+     * @throws IOException throws IOException if something fails
      * @return a Json with all data about the movie 
     */ 
     public JsonObject searchMovie(String name) throws IOException {

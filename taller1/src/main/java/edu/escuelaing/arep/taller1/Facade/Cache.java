@@ -14,7 +14,7 @@ public class Cache {
 
     /**
      * Cache's class constructor
-     * @param apf
+     *
      */
     public Cache(){
         movieCache = new ConcurrentHashMap<String,JsonObject>();
@@ -45,6 +45,7 @@ public class Cache {
 
     /**
      * method that returns if a movie is inside cache
+     * @param name the name of the movie to search inside cache
      * @return a boolean  
      */
     public boolean movieInCache(String name){

@@ -141,7 +141,7 @@ public class WebServer {
     private static String getMimeType(String filePetition) {
         return (filePetition.endsWith(".html") || filePetition.endsWith("/")) ? "text/html"
                 : ((filePetition.endsWith(".css")) ? "text/css"
-                        : (filePetition.endsWith(".js")) ? "application/javascript" : "text/plain");
+                        : (filePetition.endsWith(".js")) ? "application/javascript" : (filePetition.endsWith(".jpg")) ? "image/jp2" : "text/plain");
     }
 
     /**
@@ -164,7 +164,7 @@ public class WebServer {
                 outputLine.append(line).append("\n");
             }
         } catch (Exception e) {
-            System.err.format("IOException: ", e);
+            System.err.format("IOException: "+ e.getMessage(), e);
         }
 
         return outputLine.toString();

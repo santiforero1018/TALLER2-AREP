@@ -1,7 +1,6 @@
-# TALLER #1, APLICACIONES DISTRIBUIDAS
+# TALLER #2, APLICACIONES DISTRIBUIDAS
 
-Para este proyecto, se construira una aplicación que cuente con un servidor fachada para realizar peticiones a un API externo de peliculas, dicho aplicativo tendra una estructura de datos que haga las funciones de una memoria cache
-para almacenar temporalmente peticiones realizadas a la API externa. Para cumplir con lo solicitado, se hara uso de la API [omdbapi](https://www.omdbapi.com)
+Usando la implementación de un proyecto anterior, ahora lo que se procedera a realizar, es leer archivos del disco duro de un servidor (en este caso, serian nuestras computadoras) y dichos archivos seran un html, css y javascript 
 
 ## PARA EMPEZAR
 

@@ -16,7 +16,7 @@ Se debe contar con un Sistema Operativo capaz de correr un IDE para poder realiz
 3. Al tenerlas, ejecutar el siguiente comando en la maquina
 
 ```bash
-git clone https://github.com/santiforero1018/TALLER-1-AREP.git
+git clone https://github.com/santiforero1018/TALLER2-AREP.git
 ```
 
 ### JAVADOC
@@ -32,9 +32,9 @@ se genera la documentación del proyecto, aunque ya se encuentra generada. Para 
 Un proyecto construido por 4 clases java, la clase Main es la que pondra en funcionamiento todo el aplicativo, la clase Webserver pondra en ejecución el servidor web que retornara la pagina correspondiente para
 realizar las consultas. Por medio de la clase APIRestFacade se realizara la petición correspondiente a la API externa y una clase Cache para almacenar las peticiones realizadas y realizar un eficiente uso de recursos.
 
+Para la parte del front, se añadieron archivos html, css y js para ejecutar y mostrar en el browser cliente, al entrar, se vera inicialmente de la siguiente manera, más adelante se muestra como se veria despues de realizar una petición.
 
-
-![imagen](https://github.com/santiforero1018/TALLER-1-AREP/assets/88952698/0f7864b5-3299-4a94-93d4-78200f522c31)
+![imagen](https://github.com/santiforero1018/TALLER2-AREP/assets/88952698/fffc97a1-4f69-416a-a310-817fa74d559b)
 
 
 ## INICIANDO EL PROYECTO
@@ -52,6 +52,17 @@ mvn exec:java
 ```
 
 con estos comandos, se vuelve a compilar el codigo y lo pone en ejecución, recuerde entrar en la carpeta .\taller1 para empezar a ejecutar
+
+### Añadidos del proyecto
+anteriormente, se mandaba todo el codigo de una pagina html dentro de una etructura basica de java para poderla mostrar al cliente, ahora, el servidor de java lee los archivos del disco del servidor en curso, y este retorna 
+todo lo relacionado dentro de la pagina html.
+
+Cuando ingrese a la pagina, ahora se vera una pagina con algunos estilos estandares configurados con hojas de estilo css, que tambien se encuentran dentro de la estructura del proyecto.
+
+
+![imagen](https://github.com/santiforero1018/TALLER2-AREP/assets/88952698/f21689ef-14e5-4cdd-bed1-ac4255d748ef)
+
+
 
 ## DESARROLLADO CON
 
@@ -73,7 +84,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details -->
 
-## Acknowledgments
+## Agradecimientos
 
 * Especial Agradecimiento al profesor [Luis Daniel Benavides Navarro](https://ldbn.is.escuelaing.edu.co/) por brindar el conocimiento necesario en la realización de este trabajo
 

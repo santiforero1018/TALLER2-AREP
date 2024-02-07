@@ -51,7 +51,7 @@ mvn clean compile
 mvn exec:java
 ```
 
-con estos comandos, se vuelve a compilar el codigo y lo pone en ejecución, recuerde entrar en la carpeta .\taller1 para empezar a ejecutar
+con estos comandos, se vuelve a compilar el codigo y lo pone en ejecución, recuerde entrar en la carpeta .\taller2 para empezar a ejecutar
 
 ### Añadidos del proyecto
 anteriormente, se mandaba todo el codigo de una pagina html dentro de una etructura basica de java para poderla mostrar al cliente, ahora, el servidor de java lee los archivos del disco del servidor en curso, y este retorna 
